@@ -1,8 +1,10 @@
 #!/bin/zsh
 
+YEAR=$(cat /Users/vincent/Documents/AoC23/.cfg/config.txt | grep 'YEAR' | cut -d = -f 2)
+
 getinput() {
   if [[ $1 -ge 1 && $1 -le 25 ]]; then
-    curl -s --cookie ./.cfg/sessioncookie.txt https://adventofcode.com/2022/day/$1/input > inputs/input$1.txt;
+    curl -s --cookie /Users/vincent/Documents/AoC23/.cfg/sessioncookie.txt https://adventofcode.com/$YEAR/day/$1/input > inputs/input$1.txt;
     echo "\U2705\t" "Successfully downloaded input for day $1."
     return 0
   else
@@ -13,11 +15,11 @@ getinput() {
 
 js () {
   echo -e "import * as fs from 'fs';
-const data = fs.readFileSync('../inputs/input$1.txt', { encoding: 'utf-8', flag: 'r' })";
+const data = fs.readFileSync('/Users/vincent/Documents/AoC23/inputs/input$1.txt', { encoding: 'utf-8', flag: 'r' })";
 }
 
 py () {
-  echo -e "with open('../inputs/input$1.txt', 'r') as f:
+  echo -e "with open('/Users/vincent/Documents/AoC23/inputs/input$1.txt', 'r') as f:
     data = f.read()";
 }
 
@@ -36,7 +38,7 @@ makefile () {
   return 0
 }
 
-day=$(date | cut -w -f 2)
+day=$(date | cut -w -f 3)
 lang="py"
 
 while getopts "d:hl:" opt; do
@@ -58,4 +60,4 @@ while getopts "d:hl:" opt; do
   esac
 done
 
-(getinput $day); makefile $day $lang; echo "\n\t\t\t\U1F384\t" "Happy coding!" "\U1F384\n"
+(getinput $day) && makefile $day $lang && echo "\n\t\t\t\U1F384\t" "Happy coding!" "\U1F384\n"

@@ -1,6 +1,7 @@
 #!/bin/zsh
 
-COOKIE=$(cat .cfg/sessioncookie.txt | grep 'session' | cut -w -f 7)
+COOKIE=$(cat /Users/vincent/Documents/AoC23/.cfg/sessioncookie.txt | grep 'session' | cut -w -f 7)
+YEAR=$(cat /Users/vincent/Documents/AoC23/.cfg/config.txt | grep 'YEAR' | cut -d = -f 2)
 
 submit () {
     SUBMIT_URL="https://adventofcode.com/$1/day/$2/answer"
@@ -28,8 +29,7 @@ submit () {
 }
 
 # Set the puzzle's day and year.
-DAY=$(date | cut -w -f 2)
-YEAR=2023
+DAY=$(date | cut -w -f 3)
 LEVEL="1"
 ANSWER=""
 
