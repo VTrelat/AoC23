@@ -37,13 +37,13 @@ if [ -t 0 ]; then
     while getopts "y:d:l:ha:" opt; do
     case $opt in
         y)
-            year=$OPTARG
+            YEAR=$OPTARG
             ;;
         d)
-            day=$OPTARG
+            DAY=$OPTARG
             ;;
         h)
-            echo "Usage: aoc.sh [-y year] [-d day] [-h] [-l level (1|2) (default: 1)] [-a answer]"
+            echo "Usage: ./submit.sh [-y year] [-d day] [-h] [-l level (1|2) (default: 1)] [-a answer]"
             exit 0
             ;;
         l)
