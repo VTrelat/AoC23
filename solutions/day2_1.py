@@ -18,7 +18,6 @@ for idx in range(len(lines)):
         if not valid:
             break
         cubes = [c.strip() for c in h.split(',')]
-
         for c in cubes:
             num = int(c.split(' ')[0])
             color = c.split(' ')[1]
