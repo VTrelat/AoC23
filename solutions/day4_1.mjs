@@ -1,0 +1,2 @@
+import * as fs from "fs";
+console.log(fs.readFileSync("/Users/vincent/Documents/AoC23/inputs/input4.txt", { encoding: "utf-8", flag: "r" }).trim().split("\n").map((line) => [line.split(":")[1].split("|")[0].trim().split("  ").map((x) => x.split(" ")).flat().map(Number),line.split("|")[1].trim().split("  ").map((x) => x.split(" ")).flat().map(Number),]).map(([w, h]) => {const inter = w.filter((x) => new Set(h).has(x));return inter.length > 0 ? 2 ** (inter.length - 1) : 0;}).reduce((a, b) => a + b, 0));
