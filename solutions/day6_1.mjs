@@ -1,0 +1,3 @@
+import * as fs from "fs";
+
+console.log(((arr) => arr[0].map((_, i) => arr.map((row) => row[i])))(fs.readFileSync("/Users/vincent/Documents/AoC23/inputs/input6.txt", { encoding: "utf-8", flag: "r" }).trim().split("\n").map((l) =>l.split(":")[1].trim().split(" ").filter((w) => w.length > 0).map(Number))).map(([t, d]) => {let ways = 0;for (let hold_time = 1; hold_time <= t; hold_time++) {const speed = hold_time;const remaining_time = t - hold_time;const curd = speed * remaining_time;if (curd > d) {ways += 1;}}return ways;}).reduce((a, b) => a * b, 1));
