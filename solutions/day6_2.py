@@ -3,10 +3,10 @@ with open('/Users/vincent/Documents/AoC23/inputs/input6.txt', 'r') as f:
 
 def ways_to_beat_record_single_race(time, record_distance):
     ways = 0
-    for hold_time in range(time - 14):
-        boat_speed = hold_time + 15
-        remaining_time = time - hold_time - 15
-        total_distance = boat_speed * remaining_time
+    for hold_time in range(1, time - 13):
+        speed = hold_time + 14
+        remaining_time = time - hold_time - 14
+        total_distance = speed * remaining_time
         if total_distance > record_distance:
             ways += 1
     return ways
